@@ -5,6 +5,7 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 
 import postsRouter from "./routes/posts.js";
+import userRouter from "./routes/user.js";
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(cors());
 dotenv.config();
 
 app.use("/posts", postsRouter);
+app.use("/user", userRouter);
 
 const url = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PWD}@cluster0.thms6.mongodb.net/postsApp?retryWrites=true&w=majority`;
 
