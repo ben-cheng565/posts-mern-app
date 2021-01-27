@@ -8,7 +8,7 @@ export default makeStyles((theme) => ({
     justifyContent: "space-between",
     alignItems: "center",
     padding: "5px 50px",
-    backgroundColor: blue[300],
+    // backgroundColor: blue[300],
   },
   heading: {
     flexGrow: 1,
@@ -42,6 +42,6 @@ export default makeStyles((theme) => ({
   title: {
     flexGrow: 1,
     textDecoration: "none",
-    color: theme.palette.getContrastText(blue[200]),
+    color: "white",
   },
 }));
