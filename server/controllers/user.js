@@ -49,7 +49,7 @@ export const signup = async (req, res) => {
     }
 
     const hashedPassword = await bcrypt.hash(password, 12);
-    const user = User.create({
+    const user = await User.create({
       name: `${firstName} ${lastName}`,
       email,
       password: hashedPassword,
@@ -58,7 +58,7 @@ export const signup = async (req, res) => {
       expiresIn: "1h",
     });
 
-    res.status(200).json({ result: existingUser, token });
+    res.status(200).json({ result: user, token });
   } catch (error) {
     res.status(500).json(error.message);
   }
