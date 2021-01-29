@@ -9,7 +9,6 @@ import useStyles from "./styles";
 
 const initState = {
   title: "",
-  creator: "",
   message: "",
   tags: "",
   selectedFile: "",
@@ -22,6 +21,7 @@ const Form = ({ currId, setCurrId }) => {
     currId ? state.posts.find((p) => p._id === currId) : null
   );
   const [postData, setPostData] = useState(initState);
+  const user = JSON.parse(localStorage.getItem("profile"));
 
   useEffect(() => {
     if (post) setPostData(post);
@@ -31,9 +31,9 @@ const Form = ({ currId, setCurrId }) => {
     e.preventDefault();
 
     if (currId) {
-      dispatch(updatePost(currId, postData));
+      dispatch(updatePost(currId, { ...postData, name: user?.result?.name }));
     } else {
-      dispatch(createPost(postData));
+      dispatch(createPost({ ...postData, name: user?.result?.name }));
     }
     clear();
   };
@@ -42,6 +42,16 @@ const Form = ({ currId, setCurrId }) => {
     setCurrId(0);
     setPostData(initState);
   };
+
+  /* if (!user?.result?.name) {
+    return (
+      <Paper className={classes.paper}>
+        <Typography variant="h6" align="center">
+          Please sign in to create your own posts.
+        </Typography>
+      </Paper>
+    );
+  } */
 
   return (
     <Paper className={`${classes.root} ${classes.form}`}>
@@ -85,16 +95,7 @@ const Form = ({ currId, setCurrId }) => {
             setPostData({ ...postData, tags: e.target.value.split(",") })
           }
         />
-        <TextField
-          name="creator"
-          variant="outlined"
-          label="Creator"
-          fullWidth
-          value={postData.creator}
-          onChange={(e) =>
-            setPostData({ ...postData, creator: e.target.value })
-          }
-        />
+
         <div className={classes.fileInput}>
           <FileBase
             type="file"
@@ -111,6 +112,7 @@ const Form = ({ currId, setCurrId }) => {
           size="large"
           type="submit"
           fullWidth
+          disabled={user?.result?.name ? false : true}
         >
           Submit
         </Button>
