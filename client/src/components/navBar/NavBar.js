@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { AppBar, Typography, Toolbar, Button, Avatar } from "@material-ui/core";
 import { useDispatch } from "react-redux";
 import { useHistory, useLocation } from "react-router-dom";
+import decode from "jwt-decode";
 
 import useStyles from "./styles";
 
@@ -14,8 +15,16 @@ const NavBar = () => {
   const location = useLocation();
 
   useEffect(() => {
+    let token;
     if (user) {
-      const token = user.token;
+      token = user.token;
+    }
+    // Check if the logined user expire or not
+    if (token) {
+      const decodedToken = decode(token);
+      if (decodedToken.exp * 1000 < new Date().getTime()) {
+        handleLogout();
+      }
     }
 
     setUser(JSON.parse(localStorage.getItem("profile")));
