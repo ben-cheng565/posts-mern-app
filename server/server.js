@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 
 import postsRouter from "./routes/posts.js";
 import userRouter from "./routes/user.js";
+import uploadRouter from "./routes/upload.js";
 
 const app = express();
 
@@ -17,6 +18,8 @@ dotenv.config();
 
 app.use("/posts", postsRouter);
 app.use("/user", userRouter);
+app.use("/upload", uploadRouter);
+app.use(express.static("uploads"));
 
 const url = `mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PWD}@cluster0.thms6.mongodb.net/postsApp?retryWrites=true&w=majority`;
 

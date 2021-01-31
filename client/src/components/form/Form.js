@@ -4,6 +4,7 @@ import FileBase from "react-file-base64";
 import { useDispatch, useSelector } from "react-redux";
 
 import { createPost, updatePost } from "../../redux/actions/posts";
+import FileUpload from "./upload/fileUpload";
 
 import useStyles from "./styles";
 
@@ -23,6 +24,8 @@ const Form = ({ currId, setCurrId }) => {
   const [postData, setPostData] = useState(initState);
   const user = JSON.parse(localStorage.getItem("profile"));
 
+  const [filePath, setFilePath] = useState("");
+
   useEffect(() => {
     if (post) setPostData(post);
   }, [post]);
@@ -33,7 +36,13 @@ const Form = ({ currId, setCurrId }) => {
     if (currId) {
       dispatch(updatePost(currId, { ...postData, name: user?.result?.name }));
     } else {
-      dispatch(createPost({ ...postData, name: user?.result?.name }));
+      dispatch(
+        createPost({
+          ...postData,
+          selectedFile: filePath,
+          name: user?.result?.name,
+        })
+      );
     }
     clear();
   };
@@ -96,15 +105,8 @@ const Form = ({ currId, setCurrId }) => {
           }
         />
 
-        <div className={classes.fileInput}>
-          <FileBase
-            type="file"
-            multiple={false}
-            onDone={({ base64 }) =>
-              setPostData({ ...postData, selectedFile: base64 })
-            }
-          />
-        </div>
+        <FileUpload setFilePath={setFilePath} />
+
         <Button
           className={classes.button}
           variant="contained"
@@ -116,6 +118,7 @@ const Form = ({ currId, setCurrId }) => {
         >
           Submit
         </Button>
+
         <Button
           className={classes.button}
           variant="contained"

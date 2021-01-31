@@ -48,7 +48,7 @@ const NavBar = () => {
           component={Link}
           to="/"
         >
-          Amazing Posts
+          Highlights Posts
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>

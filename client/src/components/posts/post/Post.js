@@ -21,6 +21,7 @@ const Post = ({ post, setCurrId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
+  const imagePath = `http://localhost:5000/${post.selectedFile}`;
 
   const Likes = () => {
     const likesCount = post.likes.length;
@@ -56,7 +57,7 @@ const Post = ({ post, setCurrId }) => {
       <CardMedia
         className={classes.media}
         image={
-          post.selectedFile ||
+          imagePath ||
           "https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png"
         }
         title={post.title}
