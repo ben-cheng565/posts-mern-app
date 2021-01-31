@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const url = "http://localhost:5000";
-// const url = "https://posts-app-backend.herokuapp.com/posts";
+// const url = "https://post-app-backend.herokuapp.com";
 
 axios.interceptors.request.use((req) => {
   if (localStorage.getItem("profile")) {

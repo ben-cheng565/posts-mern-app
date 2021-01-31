@@ -1,7 +1,7 @@
 .container {
-  text-align: center;
+  text-align: left;
   width: 500px;
-  max-width: 90%;
+  max-width: 95%;
 }
 
 .files input {
