@@ -5,6 +5,7 @@ import User from "../models/user.js";
 
 export const signin = async (req, res) => {
   const { email, password } = req.body;
+  console.log(email);
 
   try {
     const existingUser = await User.findOne({ email });

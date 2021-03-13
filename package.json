@@ -1,0 +1,27 @@
+{
+  "name": "posts-mern-app",
+  "version": "1.0.0",
+  "description": "This full-stack JavaScript application includes two main modules: posts management and user authentication. User can manage their own posts, and also like others. For login the app, user can use email and password, as well as Google account.",
+  "main": "index.js",
+  "type": "module",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "nodemon server/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ben-cheng565/posts-mern-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ben-cheng565/posts-mern-app/issues"
+  },
+  "homepage": "https://github.com/ben-cheng565/posts-mern-app#readme",
+  "engines": {
+    "node": "12.4.0",
+    "npm": "6.9.0"
+  }
+}

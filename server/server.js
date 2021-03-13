@@ -3,6 +3,7 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import path from "path";
 
 import postsRouter from "./routes/posts.js";
 import userRouter from "./routes/user.js";
@@ -38,3 +39,11 @@ mongoose
   .catch((err) => {
     console.log(err);
   });
+
+const __dirname = path.resolve();
+// app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
+app.use("/uploads", express.static("uploads"));
+app.use(express.static(path.join(__dirname, "/client/build")));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "/client/build/index.html"));
+});

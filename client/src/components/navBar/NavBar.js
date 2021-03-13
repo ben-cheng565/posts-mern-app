@@ -6,6 +6,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import decode from "jwt-decode";
 
 import useStyles from "./styles";
+import { useCallback } from "react";
 
 const NavBar = () => {
   const classes = useStyles();
@@ -74,7 +75,7 @@ const NavBar = () => {
             color="primary"
             variant="contained"
             component={Link}
-            to="/auth"
+            to="/signin"
             className={classes.login}
           >
             Login

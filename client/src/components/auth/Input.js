@@ -7,6 +7,7 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 const Input = ({
   name,
   label,
+  defaultValue,
   half,
   autoFocus,
   type,
@@ -18,6 +19,7 @@ const Input = ({
       <TextField
         name={name}
         label={label}
+        defaultValue={defaultValue}
         onChange={handleChange}
         autoFocus={autoFocus}
         variant="outlined"
