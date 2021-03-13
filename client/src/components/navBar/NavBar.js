@@ -49,7 +49,7 @@ const NavBar = () => {
           component={Link}
           to="/"
         >
-          Highlights Posts
+          Oye Posts
         </Typography>
       </div>
       <Toolbar className={classes.toolbar}>
