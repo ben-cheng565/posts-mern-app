@@ -21,7 +21,7 @@ const Post = ({ post, setCurrId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem("profile"));
-  const imagePath = `http://localhost:5000/${post.selectedFile}`;
+  const imagePath = `../uploads/${post.selectedFile}`;
 
   const Likes = () => {
     const likesCount = post.likes.length;
