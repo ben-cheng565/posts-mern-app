@@ -1,17 +1,19 @@
-# Highlights Posts Application
+# Highlights Posts App
 
-This full-stack JavaScript application includes two main modules: posts management and user authentication. User can manage their own posts, and also like others. For login the app, user can use email and password, as well as Google account.
+This project includes two main modules: posts management and user authentication. Posts management allows users to create image posts, like and comment posts. Particularly, the user module enables users to sign in using email and password information or Google authorization.
+
+Demo URL: https://posts-react-app.herokuapp.com/
 
 ## What is it built on
 
-- The backend is based on the Express, and MongoDB.
-- The frontend is based on the React, Redux, and axios, etc.
+- The backend is based on the Node.Js, Express, and MongoDB.
+- The frontend is based on the Javascript, React, Redux, and axios, etc.
 
-## How do you run it locally
+## How do you run or recode it locally
 
 ### Backend
 
-In the 'server' directory, you need to run:
+In the root directory, you need to run:
 
 ```
 npm install
