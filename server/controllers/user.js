@@ -3,16 +3,19 @@ import jwt from "jsonwebtoken";
 
 import User from "../models/user.js";
 
+// user sign in api
 export const signin = async (req, res) => {
   const { email, password } = req.body;
   console.log(email);
 
   try {
+    // check if this email already exist
     const existingUser = await User.findOne({ email });
     if (!existingUser) {
       return res.status(404).json({ message: "User does not exist." });
     }
 
+    // verify if the password is correct
     const isPasswordCorrect = await bcrypt.compare(
       password,
       existingUser.password
@@ -22,6 +25,7 @@ export const signin = async (req, res) => {
       return res.status(400).json({ message: "Password is incorrect." });
     }
 
+    // create toke
     const token = jwt.sign(
       { email: existingUser.email, id: existingUser._id },
       "privatekey",
@@ -34,6 +38,7 @@ export const signin = async (req, res) => {
   }
 };
 
+// user sign up api
 export const signup = async (req, res) => {
   const { firstName, lastName, email, password, confirmPassword } = req.body;
 
