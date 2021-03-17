@@ -6,6 +6,7 @@ const reducer = (state = [], action) => {
       return [...state, action.payload];
     case "UPDATE_POST":
     case "LIKE_POST":
+      // find product and add likes
       return state.map((p) =>
         p._id === action.payload._id ? action.payload : p
       );

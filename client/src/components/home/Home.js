@@ -11,6 +11,7 @@ import useStyles from "./styles";
 
 const Home = () => {
   const classes = useStyles();
+  // create state for current selected post id
   const [currId, setCurrId] = useState(0);
   // const [isCreated, setIsCreated] = useState(false);
   const dispatch = useDispatch();

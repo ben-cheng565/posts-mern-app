@@ -1,3 +1,4 @@
+// reducer for user authentication
 const authReducer = (state = { authData: null }, action) => {
   switch (action.type) {
     case "AUTH":

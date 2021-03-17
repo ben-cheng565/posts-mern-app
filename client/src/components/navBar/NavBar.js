@@ -10,6 +10,7 @@ import { useCallback } from "react";
 
 const NavBar = () => {
   const classes = useStyles();
+  // create user state from local storage
   const [user, setUser] = useState(JSON.parse(localStorage.getItem("profile")));
   const dispatch = useDispatch();
   const history = useHistory();
@@ -23,6 +24,7 @@ const NavBar = () => {
     // Check if the logined user expire or not
     if (token) {
       const decodedToken = decode(token);
+      // handle the token expiry
       if (decodedToken.exp * 1000 < new Date().getTime()) {
         handleLogout();
       }

@@ -17,6 +17,7 @@ const initState = {
 const Form = ({ currId, setCurrId }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
+  // get current post info from state
   const post = useSelector((state) =>
     currId ? state.posts.find((p) => p._id === currId) : null
   );
@@ -33,6 +34,7 @@ const Form = ({ currId, setCurrId }) => {
     e.preventDefault();
 
     if (currId) {
+      // update post info
       dispatch(updatePost(currId, { ...postData, name: user?.result?.name }));
     } else {
       dispatch(
